@@ -15,6 +15,8 @@ router.get('/x',(req,res) => {
     res.send('x');
 });
 
+
+
 //añadir proyecto
 router.post('/add', async (req,res) => {
     //obteniendo datos
