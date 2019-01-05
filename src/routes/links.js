@@ -34,10 +34,12 @@ router.post('/add', async (req,res) => {
         await pool.query('INSERT INTO LINKS set ?',[newLink]);
     //}
 
-    req.flash('success','link guardado con éxito');
+    req.flash('success','Proyecto Generado');
     //res.send('recibido');
     const msn = 'creado con éxito';
-    res.render('links/createsuccess',{newLink,msn});
+    //res.render('links/createsuccess',{newLink,msn});
+    res.redirect('/links/proyectos');
+    //
 });
 
 //ruta proyectos
@@ -45,13 +47,13 @@ router.get('/proyectos', async (req,res) => {
     const links = await pool.query('Select * from  LINKS ');
     console.log(links);
     
-    res.render('links/lists',{links});
+    res.render('links/lists',{links}); 
 });
  
 //ruta links
 router.post('/', async(req,res) => {
-    const links = await pool.query('Select * from  LINKS ');
-    console.log(links);
+    const links = await pool.query('SELECT * FROM links order by created_at desc');
+    //console.log(links);
 
     res.render('links/lists',{links});
 });
@@ -63,6 +65,7 @@ router.get('/delete/:id', async (req,res) => {
     console.log('link with id '+{id}+' deleted succcesfuly');
     //crear notificación
     // misma vista res.redirect('/links/proyectos');
+    req.flash('success','Proyecto Eliminado');
     res.redirect('/links/proyectos');
 });
 
@@ -72,6 +75,7 @@ router.get('/update/:id', async (req,res) => {
     const links = await pool.query('Select * from Links where id  = ?',[id]);
 
     //console.log(links[0])
+    
     res.render('links/edit',{links:links[0]});
 });
 
@@ -88,7 +92,7 @@ router.post('/update/edit/:id',async (req,res) => {
 
     await pool.query('UPDATE Links set ? where id = ? ',[newLink, id]);
     
-    req.flash('success','link guardado con éxito');
+    req.flash('success','Proyecto Modificado');
     res.redirect('/links/proyectos');
     
 

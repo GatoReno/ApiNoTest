@@ -44,7 +44,7 @@ app.use(express.json() );
 //... end middle-ware
 //global variables
 app.use((req,res,next) => {
-    app.locals.success = req.flash('success')
+    app.locals.success = req.flash('success');
     next();
 });
 

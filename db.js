@@ -6,12 +6,7 @@ const { promisify } = require('util');
 console.log('tryin connection');
 
 //console.log(db);
-
-
-
 const pool = mysql.createPool(db);
-
-
 
 pool.getConnection(function(err, connection) {
     if (err) throw err; // not connected!

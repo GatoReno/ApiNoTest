@@ -1,7 +1,7 @@
-<div class="container p-4">
+
     <div class="row">
         {{#each links}}
-            <div class="col-md-3">
+            <div class="col-12 col-sm-6  col-md-4 col-lg-3">
                 <div class="card text-center">
                     <a href="">
                             <a href="{{url}}" target=".blanck">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         {{else}}    
-                <div class="col-md-4 mx-auto">
+                <div class="col-md-4 ">
                 <div class="card text-center">
                         <div class="card-body">
                             <p>No hay proyectos</p>
@@ -47,4 +47,3 @@
          
         {{/each}}
     </div>
-</div>
