@@ -7,10 +7,14 @@ const path = require('path');
 const flash = require('connect-flash');
 const session = require('express-session');
 const mySQLsession = require('express-mysql-session');
-const {db} = require('../keys')
+const {db} = require('../keys');
+const passport = require('passport');
 
 
+//init's
+ 
 const app = express();
+require('./lib/passport');
 
 //settings
 app.set('port', process.env.PORT || 4000); //puerto 
@@ -39,7 +43,8 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended : false}));
 app.use(express.json() );
 
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 //... end middle-ware
 //global variables

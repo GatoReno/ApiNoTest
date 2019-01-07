@@ -91,6 +91,7 @@ router.post('/update/edit/:id',async (req,res) => {
         url : url,
         description : descrip
     };
+    //CURRENT_TIMESTAMP
 
     await pool.query('UPDATE Links set ? where id = ? ',[newLink, id]);
     
