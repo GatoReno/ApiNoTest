@@ -14,12 +14,12 @@ router.get('/signup', (req,res) => {
 });
 
 router.post('/signup', passport.authenticate('local.signup',{
-    succesRedirect: '/porfile',
-    falureRedirect : '/signup',
+    successRedirect: '/porfile',
+    failureRedirect : '/signup',
     failureFlash : true
 }));
 
-router.get('/porfile',()=>{
+router.get('/porfile',(req,res)=>{
     res.send('your porfile');
 });
 
